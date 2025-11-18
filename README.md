@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Codivante Landing Page
 
-## Getting Started
+Modern, animated landing page voor Codivante gebouwd met Next.js 16, Framer Motion en Lenis smooth scroll.
 
-First, run the development server:
+## ✨ Features
 
-```bash
+- **Buttery Smooth Scrolling** - Lenis smooth scroll implementatie
+- **Advanced Animations** - Framer Motion met stagger effects, magnetic buttons en text scramble
+- **Responsive Design** - Mobile-first approach met dedicated mobile menu
+- **Unsplash Integration** - Professionele portfolio afbeeldingen
+- **Dark Mode Ready** - Theme switching support
+- **Modern Tech Stack** - Next.js 16, TypeScript, Tailwind CSS v4
+
+## 🎨 Animaties
+
+- Text scramble effect op hero heading
+- Magnetic hover effect op buttons
+- Floating gradient orbs
+- Scroll-triggered animations
+- Service icon rotaties
+- Portfolio image zoom effects
+
+## 🚀 Tech Stack
+
+- **Framework**: Next.js 16.0.3 (App Router)
+- **Styling**: Tailwind CSS v4
+- **Animations**: Framer Motion 12.23
+- **Smooth Scroll**: Lenis
+- **UI Components**: shadcn/ui (Radix UI)
+- **Icons**: Lucide React
+- **Forms**: React Hook Form + Zod
+
+## 📦 Installatie
+
+\`\`\`bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+\`\`\`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in je browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🌍 Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Optioneel: Voor Unsplash API integratie
 
-## Learn More
+\`\`\`env
+NEXT_PUBLIC_UNSPLASH_ACCESS_KEY=your_key_here
+\`\`\`
 
-To learn more about Next.js, take a look at the following resources:
+## 🎯 Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Deploy via Vercel:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+\`\`\`bash
+vercel
+\`\`\`
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
