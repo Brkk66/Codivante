@@ -11,13 +11,10 @@ interface Project {
   id: string;
   title: string;
   category: string;
-  type: string;
-  shortDescription: string;
   description: string;
   image: string;
-  features: string[];
-  gradient: string;
-  devices?: ('desktop' | 'tablet' | 'mobile')[];
+  tech: string[];
+  color: string;
 }
 
 const projects: Project[] = [
@@ -25,37 +22,55 @@ const projects: Project[] = [
     id: 'the-gallery-barbers',
     title: 'The Gallery Barbers',
     category: 'Barbershop',
-    type: 'Online Booking Platform',
-    shortDescription: 'Professionele barbershop met online afspraken systeem',
-    description: 'The Gallery Barbers is een moderne barbershop waar klanten eenvoudig online afspraken kunnen maken. De website biedt een overzicht van diensten, prijzen en beschikbare tijdsloten.',
+    description: 'Professionele barbershop met online afspraken systeem',
     image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&h=800&fit=crop',
-    features: ['Online Boekingen', '24/7 Beschikbaar', 'Automatische Bevestiging'],
-    gradient: 'from-amber-600 via-amber-500 to-yellow-500',
-    devices: ['desktop', 'mobile']
+    tech: ['WordPress', 'Bookly', 'WooCommerce'],
+    color: 'from-amber-600 via-amber-500 to-yellow-500'
   },
   {
     id: 'ma-engineers',
     title: 'MA-Engineers',
     category: 'Multi-Page',
-    type: 'Engineering Bureau',
-    shortDescription: 'Technische meedenkers voor efficiënter werken',
-    description: 'MA-Engineers is geen klassiek engineeringsbureau. Wij zijn technische meedenkers die processen verbeteren, projecten overnemen én teams aanvullen.',
+    description: 'Technische meedenkers voor efficiënter werken',
     image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&h=800&fit=crop',
-    features: ['Responsive Design', 'Moderne Interface', 'SEO Geoptimaliseerd'],
-    gradient: 'from-blue-600 via-blue-500 to-cyan-500',
-    devices: ['desktop', 'tablet', 'mobile']
+    tech: ['Next.js', 'React', 'Tailwind CSS'],
+    color: 'from-blue-600 via-blue-500 to-cyan-500'
   },
   {
     id: 'moreurop',
     title: 'Moreurop',
     category: 'Full-Stack',
-    type: 'Professional Services',
-    shortDescription: 'Platform voor professionele klusjesmannen',
-    description: 'Een moderne website voor het boeken van professionele klusjesmannen, met een overzicht van diensten en een vlotte boekingsflow.',
+    description: 'Platform voor professionele klusjesmannen',
     image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&h=800&fit=crop',
-    features: ['Veilige Betalingen', 'Real-time Updates', 'Gebruiksvriendelijk'],
-    gradient: 'from-purple-600 via-purple-500 to-pink-500',
-    devices: ['desktop', 'tablet', 'mobile']
+    tech: ['Next.js', 'PostgreSQL', 'Stripe'],
+    color: 'from-purple-600 via-purple-500 to-pink-500'
+  },
+  {
+    id: 'olive-grove-market',
+    title: 'Olive Grove Market',
+    category: 'E-commerce',
+    description: 'Premium Marokkaanse olijfolie online shop',
+    image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=1200&h=800&fit=crop',
+    tech: ['Shopify', 'Liquid', 'Stripe'],
+    color: 'from-green-600 via-emerald-500 to-teal-500'
+  },
+  {
+    id: 'labware',
+    title: 'Labware',
+    category: 'E-commerce',
+    description: 'Platform voor laboratorium apparatuur',
+    image: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=1200&h=800&fit=crop',
+    tech: ['Next.js', 'PostgreSQL', 'Stripe'],
+    color: 'from-cyan-600 via-blue-500 to-indigo-500'
+  },
+  {
+    id: 'pixelperfect',
+    title: 'PixelPerfect',
+    category: 'Portfolio',
+    description: 'Portfolio website voor creatief bureau',
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=800&fit=crop',
+    tech: ['Next.js', 'Framer Motion', 'Three.js'],
+    color: 'from-pink-600 via-purple-500 to-violet-600'
   }
 ];
 
@@ -84,123 +99,73 @@ export function PortfolioShowcase() {
         </motion.div>
 
         <div className="relative -mx-6 md:mx-0">
-          <div className="flex gap-6 overflow-x-auto pb-8 px-6 snap-x snap-mandatory scrollbar-hide md:grid md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0">
+          <div className="flex gap-6 overflow-x-auto pb-8 px-6 snap-x snap-mandatory scrollbar-hide md:grid md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0 md:gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: index * 0.1 }}
+                whileHover={{ y: -10 }}
                 className="group min-w-[85vw] md:min-w-0 snap-center"
               >
                 <Link href={`/portfolio/${project.id}`}>
-                  <Card className="overflow-hidden h-full hover:shadow-2xl transition-all duration-500 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 cursor-pointer">
-                    {/* Device Mockup Display */}
-                    <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900">
-                      {/* Gradient Accent */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-5 z-10`} />
+                  <Card className="overflow-hidden h-full hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-blue-500/20 cursor-pointer">
+                    {/* Browser Mockup */}
+                    <div className={`relative h-64 overflow-hidden bg-gradient-to-br ${project.color} p-1`}>
+                      {/* Browser Chrome */}
+                      <div className="bg-white dark:bg-zinc-900 rounded-t-lg h-full flex flex-col">
+                        <div className="flex items-center gap-1.5 px-3 py-2 bg-zinc-100 dark:bg-zinc-800 rounded-t-lg">
+                          <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
+                          <div className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
+                          <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
+                        </div>
 
-                      {/* Desktop/Tablet/Mobile Mockups */}
-                      <div className="relative w-full h-full flex items-center justify-center p-8">
-                        {/* Desktop mockup (larger) */}
-                        <motion.div
-                          whileHover={{ scale: 1.02, y: -5 }}
-                          transition={{ duration: 0.4 }}
-                          className="relative w-[70%] h-[85%] rounded-lg shadow-2xl overflow-hidden border-4 border-zinc-800 dark:border-zinc-700 bg-zinc-900"
-                        >
-                          <div className="w-full h-6 bg-zinc-800 flex items-center px-2 gap-1.5">
-                            <div className="w-2 h-2 rounded-full bg-red-500" />
-                            <div className="w-2 h-2 rounded-full bg-yellow-500" />
-                            <div className="w-2 h-2 rounded-full bg-green-500" />
-                          </div>
-                          <Image
-                            src={project.image}
-                            alt={project.title}
-                            fill
-                            className="object-cover object-top"
-                          />
-                        </motion.div>
-
-                        {/* Mobile mockup (overlapping) */}
-                        {project.devices?.includes('mobile') && (
+                        {/* Screenshot */}
+                        <div className="flex-1 relative overflow-hidden">
                           <motion.div
-                            whileHover={{ scale: 1.05, x: 5 }}
-                            transition={{ duration: 0.4 }}
-                            className="absolute bottom-8 right-8 w-[25%] h-[70%] rounded-2xl shadow-2xl overflow-hidden border-4 border-zinc-800 dark:border-zinc-700 bg-zinc-900 z-20"
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ duration: 0.6 }}
+                            className="w-full h-full"
                           >
-                            <div className="w-full h-full relative">
-                              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-20 h-4 bg-zinc-900 rounded-b-xl z-30" />
-                              <Image
-                                src={project.image}
-                                alt={`${project.title} mobile`}
-                                fill
-                                className="object-cover object-top"
-                              />
-                            </div>
+                            <Image
+                              src={project.image}
+                              alt={project.title}
+                              fill
+                              className="object-cover object-top"
+                            />
                           </motion.div>
-                        )}
-                      </div>
-
-                      {/* Device Icons */}
-                      <div className="absolute top-4 right-4 flex gap-2 z-30">
-                        {project.devices?.includes('desktop') && (
-                          <div className="w-8 h-8 rounded-lg bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm flex items-center justify-center">
-                            <Monitor className="w-4 h-4 text-zinc-700 dark:text-zinc-300" />
-                          </div>
-                        )}
-                        {project.devices?.includes('mobile') && (
-                          <div className="w-8 h-8 rounded-lg bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm flex items-center justify-center">
-                            <Smartphone className="w-4 h-4 text-zinc-700 dark:text-zinc-300" />
-                          </div>
-                        )}
+                        </div>
                       </div>
 
                       {/* Hover Overlay */}
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        whileHover={{ opacity: 1 }}
-                        className="absolute inset-0 bg-black/50 backdrop-blur-sm z-40 flex items-center justify-center"
-                      >
-                        <motion.div
-                          initial={{ scale: 0.8, opacity: 0 }}
-                          whileHover={{ scale: 1, opacity: 1 }}
-                          transition={{ duration: 0.3 }}
-                          className="flex flex-col items-center gap-2"
-                        >
-                          <div className="w-12 h-12 rounded-full bg-white dark:bg-zinc-900 flex items-center justify-center">
-                            <ExternalLink className="w-6 h-6 text-zinc-900 dark:text-white" />
-                          </div>
-                          <span className="text-white text-sm font-medium">Bekijk Project</span>
-                        </motion.div>
-                      </motion.div>
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div className="px-6 py-3 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white rounded-lg font-medium flex items-center gap-2 hover:scale-105 transition-transform">
+                          Bekijk Project
+                          <ExternalLink className="h-4 w-4" />
+                        </div>
+                      </div>
                     </div>
 
                     {/* Project Info */}
-                    <CardHeader className="p-6 space-y-3">
-                      <div className="flex items-center gap-2">
-                        <Badge variant="secondary" className="text-xs font-medium">
+                    <CardHeader className="p-6">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300">
                           {project.category}
-                        </Badge>
-                        <span className="text-xs text-zinc-500 dark:text-zinc-400">
-                          {project.type}
                         </span>
                       </div>
-
-                      <CardTitle className="text-xl group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
+                      <CardTitle className="group-hover:text-blue-600 transition-colors mb-2">
                         {project.title}
                       </CardTitle>
-
-                      <CardDescription className="text-sm leading-relaxed">
-                        {project.shortDescription}
-                      </CardDescription>
-
-                      {/* Features */}
-                      <div className="flex flex-wrap gap-2 pt-2">
-                        {project.features.map((feature, i) => (
+                      <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.tech.map((t, i) => (
                           <span
                             key={i}
-                            className="text-xs px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+                            className="text-xs px-2 py-1 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
                           >
-                            {feature}
+                            {t}
                           </span>
                         ))}
                       </div>

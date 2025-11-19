@@ -91,6 +91,87 @@ const projects = {
     technologies: ['Next.js', 'PostgreSQL', 'Stripe'],
     liveUrl: '#',
     gradient: 'from-purple-600 via-purple-500 to-pink-500'
+  },
+  'olive-grove-market': {
+    id: 'olive-grove-market',
+    title: 'Olive Grove Market',
+    category: 'E-commerce',
+    type: 'Online Winkel',
+    date: 'Augustus 2024',
+    client: 'Olive Grove Market',
+    shortDescription: 'Premium Marokkaanse olijfolie online shop',
+    description: 'Een elegante e-commerce website voor de verkoop van ambachtelijke Marokkaanse olijfolie, met een focus op kwaliteit en authenticiteit.',
+    challenge: 'De klant wilde hun premium olijfolieproducten online verkopen met een website die de ambachtelijke kwaliteit en Marokkaanse roots weerspiegelt.',
+    solution: 'We ontwikkelden een visueel aantrekkelijke webshop met productfotografie, veilige betalingen en een intuïtieve winkelervaring die de premium uitstraling van het merk behoudt.',
+    results: [
+      '200+ online verkopen in eerste maand',
+      '45% conversie van bezoekers naar klanten',
+      'Verhoogde merkbekendheid'
+    ],
+    image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=1200&h=800&fit=crop',
+    images: [
+      'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=1200&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1596591606975-97ee5cef3a1e?w=1200&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1437252611977-07f74518abd7?w=1200&h=800&fit=crop'
+    ],
+    features: ['Online Winkelwagen', 'Veilige Checkout', 'Product Reviews'],
+    technologies: ['Shopify', 'Liquid', 'Stripe'],
+    liveUrl: '#',
+    gradient: 'from-green-600 via-emerald-500 to-teal-500'
+  },
+  'labware': {
+    id: 'labware',
+    title: 'Labware',
+    category: 'E-commerce',
+    type: 'B2B Platform',
+    date: 'Juli 2024',
+    client: 'Labware Solutions',
+    shortDescription: 'Platform voor laboratorium apparatuur',
+    description: 'Een professioneel B2B e-commerce platform voor de verkoop van laboratoriumapparatuur en wetenschappelijke benodigdheden aan onderzoeksinstellingen.',
+    challenge: 'Het bedrijf had een verouderd systeem en wilde een moderne, schaalbare oplossing met voorraadbe heer en gedetailleerde productspecificaties.',
+    solution: 'We bouwden een geavanceerd B2B platform met uitgebreide productcatalogi, bulkbestellingen, offerteaanvragen en een CRM-integratie voor accountbeheer.',
+    results: [
+      '150+ zakelijke klanten gemigreerd',
+      '60% snellere orderverwerking',
+      'Geautomatiseerd voorraadbeheer'
+    ],
+    image: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=1200&h=800&fit=crop',
+    images: [
+      'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=1200&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1200&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1567427018141-0584cfcbf1b8?w=1200&h=800&fit=crop'
+    ],
+    features: ['Bulk Ordering', 'Quote Requests', 'Inventory Management'],
+    technologies: ['Next.js', 'PostgreSQL', 'Stripe'],
+    liveUrl: '#',
+    gradient: 'from-cyan-600 via-blue-500 to-indigo-500'
+  },
+  'pixelperfect': {
+    id: 'pixelperfect',
+    title: 'PixelPerfect',
+    category: 'Portfolio',
+    type: 'Creative Agency',
+    date: 'Juni 2024',
+    client: 'PixelPerfect Studio',
+    shortDescription: 'Portfolio website voor creatief bureau',
+    description: 'Een visueel indrukwekkende portfolio website voor een creatief ontwerpbureau, met focus op het tentoonstellen van hun beste werk en het aantrekken van hoogwaardige klanten.',
+    challenge: 'De creative agency wilde een website die hun creatieve visie en unieke ontwerpstijl volledig tot leven brengt, terwijl het technisch hoogstaand blijft.',
+    solution: 'We ontwikkelden een interactieve portfolio site met vloeiende animaties, dynamische projectgalerijen en een storytelling-aanpak die bezoekers meeneemt in hun creatieve proces.',
+    results: [
+      '85% meer portfolio views',
+      '12 nieuwe high-value klanten',
+      'Award-winning design erkenning'
+    ],
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=800&fit=crop',
+    images: [
+      'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1200&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=1200&h=800&fit=crop'
+    ],
+    features: ['Interactieve Animaties', 'Project Galerij', 'Contact Formulier'],
+    technologies: ['Next.js', 'Framer Motion', 'Three.js'],
+    liveUrl: '#',
+    gradient: 'from-pink-600 via-purple-500 to-violet-600'
   }
 };
 

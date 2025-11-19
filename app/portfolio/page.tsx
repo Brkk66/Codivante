@@ -10,77 +10,58 @@ import { portfolioImages } from '@/lib/unsplash';
 
 const projects = [
   {
+    id: 'the-gallery-barbers',
     title: 'The Gallery Barbers',
-    category: 'Barbershop Website',
-    description: 'Fresh cuts, Good vibes - Moderne barbershop met online booking',
-    image: portfolioImages.ecommerce,
+    category: 'Barbershop',
+    description: 'Professionele barbershop met online afspraken systeem',
+    image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&h=800&fit=crop',
     tech: ['WordPress', 'Bookly', 'WooCommerce'],
-    link: 'https://thegallerybarbers.com',
-    color: 'from-blue-500 to-purple-600'
+    color: 'from-amber-600 via-amber-500 to-yellow-500'
   },
   {
-    title: 'TechFlow Solutions',
-    category: 'SaaS Platform',
-    description: 'B2B platform voor project management en team collaboration',
-    image: portfolioImages.saas,
-    tech: ['Next.js', 'TypeScript', 'PostgreSQL'],
-    color: 'from-green-500 to-teal-600'
+    id: 'ma-engineers',
+    title: 'MA-Engineers',
+    category: 'Multi-Page',
+    description: 'Technische meedenkers voor efficiënter werken',
+    image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&h=800&fit=crop',
+    tech: ['Next.js', 'React', 'Tailwind CSS'],
+    color: 'from-blue-600 via-blue-500 to-cyan-500'
   },
   {
-    title: 'Urban Eats',
-    category: 'Restaurant Website',
-    description: 'Online menu, reserveringen en delivery integratie',
-    image: portfolioImages.corporate,
-    tech: ['React', 'Stripe', 'Google Maps API'],
-    color: 'from-orange-500 to-red-600'
+    id: 'moreurop',
+    title: 'Moreurop',
+    category: 'Full-Stack',
+    description: 'Platform voor professionele klusjesmannen',
+    image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&h=800&fit=crop',
+    tech: ['Next.js', 'PostgreSQL', 'Stripe'],
+    color: 'from-purple-600 via-purple-500 to-pink-500'
   },
   {
-    title: 'FitLife Pro',
-    category: 'Fitness App',
-    description: 'Personal training app met workout tracking en voedingsplan',
-    image: portfolioImages.mobile,
-    tech: ['React Native', 'Firebase', 'HealthKit'],
-    color: 'from-pink-500 to-purple-600'
-  },
-  {
-    title: 'DesignStudio',
-    category: 'Portfolio Website',
-    description: 'Creatief portfolio voor design studio met project showcase',
-    image: portfolioImages.portfolio,
-    tech: ['Next.js', 'Framer Motion', 'Sanity CMS'],
-    color: 'from-indigo-500 to-blue-600'
-  },
-  {
-    title: 'BookSmart',
-    category: 'Booking System',
-    description: 'All-in-one afsprakenplanner voor beauty salons',
-    image: portfolioImages.booking,
-    tech: ['Vue.js', 'Node.js', 'MongoDB'],
-    color: 'from-yellow-500 to-orange-600'
-  },
-  {
-    title: 'LuxeStay Hotels',
-    category: 'Hospitality',
-    description: 'Luxe hotel website met online reserveringen en kamerbeheer',
-    image: portfolioImages.ecommerce,
-    tech: ['Next.js', 'Stripe', 'Booking API'],
-    color: 'from-purple-500 to-pink-600'
-  },
-  {
-    title: 'CodeLearn',
-    category: 'E-learning Platform',
-    description: 'Online leerplatform voor programmeren met interactieve lessen',
-    image: portfolioImages.saas,
-    tech: ['React', 'Node.js', 'WebRTC'],
-    color: 'from-cyan-500 to-blue-600'
-  },
-  {
-    title: 'GreenThumb',
+    id: 'olive-grove-market',
+    title: 'Olive Grove Market',
     category: 'E-commerce',
-    description: 'Online plantenshop met care guides en abonnementen',
-    image: portfolioImages.corporate,
-    tech: ['Shopify', 'React', 'Subscription API'],
-    color: 'from-green-500 to-emerald-600'
+    description: 'Premium Marokkaanse olijfolie online shop',
+    image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=1200&h=800&fit=crop',
+    tech: ['Shopify', 'Liquid', 'Stripe'],
+    color: 'from-green-600 via-emerald-500 to-teal-500'
+  },
+  {
+    id: 'labware',
+    title: 'Labware',
+    category: 'E-commerce',
+    description: 'Platform voor laboratorium apparatuur',
+    image: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=1200&h=800&fit=crop',
+    tech: ['Next.js', 'PostgreSQL', 'Stripe'],
+    color: 'from-cyan-600 via-blue-500 to-indigo-500'
+  },
+  {
+    id: 'pixelperfect',
+    title: 'PixelPerfect',
+    category: 'Portfolio',
+    description: 'Portfolio website voor creatief bureau',
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=800&fit=crop',
+    tech: ['Next.js', 'Framer Motion', 'Three.js'],
+    color: 'from-pink-600 via-purple-500 to-violet-600'
   }
 ];
 
@@ -144,7 +125,8 @@ export default function PortfolioPage() {
                 whileHover={{ y: -10 }}
                 className="group"
               >
-                <Card className="overflow-hidden h-full hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-blue-500/20">
+                <Link href={`/portfolio/${project.id}`}>
+                  <Card className="overflow-hidden h-full hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-blue-500/20 cursor-pointer">
                   {/* Browser Mockup */}
                   <div className={`relative h-64 overflow-hidden bg-gradient-to-br ${project.color} p-1`}>
                     {/* Browser Chrome */}
@@ -173,19 +155,12 @@ export default function PortfolioPage() {
                     </div>
 
                     {/* Hover Overlay */}
-                    {project.link && (
-                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-6 py-3 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white rounded-lg font-medium flex items-center gap-2 hover:scale-105 transition-transform"
-                        >
-                          Bekijk Live
-                          <ExternalLink className="h-4 w-4" />
-                        </a>
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="px-6 py-3 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white rounded-lg font-medium flex items-center gap-2 hover:scale-105 transition-transform">
+                        Bekijk Project
+                        <ExternalLink className="h-4 w-4" />
                       </div>
-                    )}
+                    </div>
                   </div>
 
                   {/* Project Info */}
@@ -213,6 +188,7 @@ export default function PortfolioPage() {
                     </div>
                   </CardHeader>
                 </Card>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
