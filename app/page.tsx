@@ -246,7 +246,7 @@ export default function Home() {
                 icon: Code2,
                 title: 'Webontwikkeling',
                 description: 'Snelle en schaalbare websites met moderne technologieën.',
-                features: ['Next.js & React', 'TypeScript', 'Responsive Design']
+                features: ['Moderne Architectuur', 'Veilig & Betrouwbaar', 'Responsive Design']
               },
               {
                 icon: Palette,
