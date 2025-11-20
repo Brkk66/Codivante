@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Code2, Palette, Rocket, Users, Mail, Phone, MapPin, CheckCircle2, Star, Menu, X, Loader2 } from 'lucide-react';
+import { ArrowRight, Code2, Palette, Rocket, Users, Mail, Phone, MapPin, CheckCircle2, Star, Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -14,19 +14,10 @@ import { TextScramble } from '@/components/text-scramble';
 import { MagneticButton } from '@/components/magnetic-button';
 import { portfolioImages } from '@/lib/unsplash';
 import { useLenis, scrollTo } from '@/hooks/use-lenis';
-import { toast } from 'react-toastify';
 
 export default function Home() {
   useLenis();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  // Contact form state
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
@@ -36,49 +27,6 @@ export default function Home() {
     e.preventDefault();
     scrollTo(id);
     setMobileMenuOpen(false);
-  };
-
-  // Handle form submission
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!formData.name || !formData.email || !formData.message) {
-      toast.error('Vul alle velden in alsjeblieft');
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        toast.success('Bericht succesvol verzonden! We nemen binnen 24 uur contact op.');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        toast.error(data.error || 'Er is iets misgegaan. Probeer het later opnieuw.');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      toast.error('Er is iets misgegaan. Probeer het later opnieuw of mail direct naar info@codivante.com');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.id]: e.target.value
-    }));
   };
 
   const fadeInUp = {
@@ -298,7 +246,7 @@ export default function Home() {
                 icon: Code2,
                 title: 'Webontwikkeling',
                 description: 'Snelle en schaalbare websites met moderne technologieën.',
-                features: ['Moderne Architectuur', 'Veilig & Betrouwbaar', 'Responsive Design']
+                features: ['Next.js & React', 'TypeScript', 'Responsive Design']
               },
               {
                 icon: Palette,
@@ -413,25 +361,22 @@ export default function Home() {
                 {
                   title: 'The Gallery Barbers',
                   category: 'Barbershop',
-                  description: 'Moderne barbershop website met online afspraken systeem en stijlvolle portfolio.',
                   image: portfolioImages.ecommerce,
-                  tags: ['Online Booking', 'Portfolio', 'Social Media'],
+                  tech: ['WordPress', 'Bookly'],
                   color: 'from-blue-500 to-purple-600'
                 },
                 {
                   title: 'TechFlow Solutions',
                   category: 'SaaS Platform',
-                  description: 'Cloud-based projectmanagement platform voor teams met real-time samenwerking.',
                   image: portfolioImages.saas,
-                  tags: ['Dashboard', 'Analytics', 'Team Collaboration'],
+                  tech: ['Next.js', 'TypeScript'],
                   color: 'from-green-500 to-teal-600'
                 },
                 {
                   title: 'Urban Eats',
                   category: 'Restaurant',
-                  description: 'Interactieve restaurant website met online menukaart en tafelreservering.',
                   image: portfolioImages.corporate,
-                  tags: ['Online Menu', 'Reservations', 'Photo Gallery'],
+                  tech: ['React', 'Framer Motion'],
                   color: 'from-orange-500 to-red-600'
                 }
               ].map((project, index) => (
@@ -478,16 +423,13 @@ export default function Home() {
                       <CardTitle className="group-hover:text-blue-600 transition-colors text-xl mb-3">
                         {project.title}
                       </CardTitle>
-                      <CardDescription className="text-sm mb-4">
-                        {project.description}
-                      </CardDescription>
                       <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag, i) => (
+                        {project.tech.map((t, i) => (
                           <span
                             key={i}
                             className="text-xs px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
                           >
-                            {tag}
+                            {t}
                           </span>
                         ))}
                       </div>
@@ -600,62 +542,23 @@ export default function Home() {
                   <CardTitle>Stuur een Bericht</CardTitle>
                   <CardDescription>We nemen binnen 24 uur contact met je op</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">Naam</Label>
-                      <Input
-                        id="name"
-                        placeholder="Jouw naam"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        disabled={isSubmitting}
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="jouw@email.nl"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        disabled={isSubmitting}
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Bericht</Label>
-                      <Textarea
-                        id="message"
-                        placeholder="Vertel ons over je project..."
-                        rows={5}
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        disabled={isSubmitting}
-                        required
-                      />
-                    </div>
-                    <Button
-                      type="submit"
-                      className="w-full"
-                      size="lg"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                          Verzenden...
-                        </>
-                      ) : (
-                        <>
-                          Verstuur Bericht
-                          <ArrowRight className="ml-2 h-5 w-5" />
-                        </>
-                      )}
-                    </Button>
-                  </form>
+                <CardContent className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="name">Naam</Label>
+                    <Input id="name" placeholder="Jouw naam" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email</Label>
+                    <Input id="email" type="email" placeholder="jouw@email.nl" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Bericht</Label>
+                    <Textarea id="message" placeholder="Vertel ons over je project..." rows={5} />
+                  </div>
+                  <MagneticButton className="w-full" size="lg">
+                    Verstuur Bericht
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </MagneticButton>
                 </CardContent>
               </Card>
             </motion.div>
