@@ -460,7 +460,7 @@ export default function Home() {
                         {project.description}
                       </CardDescription>
                       <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag, i) => (
+                        {project.tags?.map((tag, i) => (
                           <span
                             key={i}
                             className="text-xs px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
