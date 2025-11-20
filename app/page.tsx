@@ -30,6 +30,10 @@ export default function Home() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Newsletter state
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false);
+
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
@@ -81,6 +85,42 @@ export default function Home() {
       ...prev,
       [e.target.id]: e.target.value
     }));
+  };
+
+  // Handle newsletter submission
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!newsletterEmail) {
+      toast.error('Voer een geldig e-mailadres in');
+      return;
+    }
+
+    setIsNewsletterSubmitting(true);
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: newsletterEmail }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success('Bedankt voor je inschrijving!');
+        setNewsletterEmail('');
+      } else {
+        toast.error(data.error || 'Er is iets misgegaan. Probeer het later opnieuw.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error('Er is iets misgegaan. Probeer het later opnieuw.');
+    } finally {
+      setIsNewsletterSubmitting(false);
+    }
   };
 
   const fadeInUp = {
@@ -733,12 +773,24 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2 text-sm text-zinc-400">
-                <li>info@codivante.com</li>
-                <li>+31 6 12345678</li>
-                <li>Amsterdam, NL</li>
-              </ul>
+              <h4 className="font-semibold mb-4">Newsletter</h4>
+              <p className="text-sm text-zinc-400 mb-4">
+                Ontvang tips, updates en aanbiedingen
+              </p>
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col gap-2">
+                <Input
+                  type="email"
+                  placeholder="jouw@email.nl"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  className="bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500"
+                  disabled={isNewsletterSubmitting}
+                  required
+                />
+                <Button type="submit" size="sm" className="w-full" disabled={isNewsletterSubmitting}>
+                  {isNewsletterSubmitting ? 'Bezig...' : 'Schrijf je in'}
+                </Button>
+              </form>
             </div>
           </motion.div>
           <div className="border-t border-zinc-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
