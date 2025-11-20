@@ -15,6 +15,8 @@ import { MagneticButton } from '@/components/magnetic-button';
 import { portfolioImages } from '@/lib/unsplash';
 import { useLenis, scrollTo } from '@/hooks/use-lenis';
 import { toast } from 'react-toastify';
+import { getFeaturedProjects } from '@/lib/projects';
+import Link from 'next/link';
 
 export default function Home() {
   useLenis();
@@ -409,38 +411,14 @@ export default function Home() {
               className="flex gap-6 overflow-x-auto pb-8 px-6 md:px-0 snap-x snap-mandatory scrollbar-hide md:grid md:grid-cols-3 md:overflow-visible"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
-              {[
-                {
-                  title: 'The Gallery Barbers',
-                  category: 'Barbershop',
-                  description: 'Moderne barbershop website met online afspraken systeem en stijlvolle portfolio.',
-                  image: portfolioImages.ecommerce,
-                  tags: ['Online Booking', 'Portfolio', 'Social Media'],
-                  color: 'from-blue-500 to-purple-600'
-                },
-                {
-                  title: 'TechFlow Solutions',
-                  category: 'SaaS Platform',
-                  description: 'Cloud-based projectmanagement platform voor teams met real-time samenwerking.',
-                  image: portfolioImages.saas,
-                  tags: ['Dashboard', 'Analytics', 'Team Collaboration'],
-                  color: 'from-green-500 to-teal-600'
-                },
-                {
-                  title: 'Urban Eats',
-                  category: 'Restaurant',
-                  description: 'Interactieve restaurant website met online menukaart en tafelreservering.',
-                  image: portfolioImages.corporate,
-                  tags: ['Online Menu', 'Reservations', 'Photo Gallery'],
-                  color: 'from-orange-500 to-red-600'
-                }
-              ].map((project, index) => (
+              {getFeaturedProjects(3).map((project, index) => (
                 <motion.div
-                  key={index}
+                  key={project.id}
                   whileHover={{ y: -8 }}
                   className="group min-w-[85vw] md:min-w-0 snap-center"
                 >
-                  <Card className="overflow-hidden h-full hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-blue-500/20">
+                  <Link href={`/portfolio/${project.id}`}>
+                    <Card className="overflow-hidden h-full hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-blue-500/20 cursor-pointer">
                     {/* Browser Mockup */}
                     <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${project.color} p-1`}>
                       {/* Browser Chrome */}
@@ -493,6 +471,7 @@ export default function Home() {
                       </div>
                     </CardHeader>
                   </Card>
+                  </Link>
                 </motion.div>
               ))}
             </motion.div>

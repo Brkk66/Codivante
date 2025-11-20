@@ -6,64 +6,7 @@ import Link from 'next/link';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { portfolioImages } from '@/lib/unsplash';
-
-const projects = [
-  {
-    id: 'the-gallery-barbers',
-    title: 'The Gallery Barbers',
-    category: 'Barbershop',
-    description: 'Professionele barbershop met online afspraken systeem',
-    image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&h=800&fit=crop',
-    tech: ['WordPress', 'Bookly', 'WooCommerce'],
-    color: 'from-amber-600 via-amber-500 to-yellow-500'
-  },
-  {
-    id: 'ma-engineers',
-    title: 'MA-Engineers',
-    category: 'Multi-Page',
-    description: 'Technische meedenkers voor efficiënter werken',
-    image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&h=800&fit=crop',
-    tech: ['Next.js', 'React', 'Tailwind CSS'],
-    color: 'from-blue-600 via-blue-500 to-cyan-500'
-  },
-  {
-    id: 'moreurop',
-    title: 'Moreurop',
-    category: 'Full-Stack',
-    description: 'Platform voor professionele klusjesmannen',
-    image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&h=800&fit=crop',
-    tech: ['Next.js', 'PostgreSQL', 'Stripe'],
-    color: 'from-purple-600 via-purple-500 to-pink-500'
-  },
-  {
-    id: 'olive-grove-market',
-    title: 'Olive Grove Market',
-    category: 'E-commerce',
-    description: 'Premium Marokkaanse olijfolie online shop',
-    image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=1200&h=800&fit=crop',
-    tech: ['Shopify', 'Liquid', 'Stripe'],
-    color: 'from-green-600 via-emerald-500 to-teal-500'
-  },
-  {
-    id: 'labware',
-    title: 'Labware',
-    category: 'E-commerce',
-    description: 'Platform voor laboratorium apparatuur',
-    image: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=1200&h=800&fit=crop',
-    tech: ['Next.js', 'PostgreSQL', 'Stripe'],
-    color: 'from-cyan-600 via-blue-500 to-indigo-500'
-  },
-  {
-    id: 'pixelperfect',
-    title: 'PixelPerfect',
-    category: 'Portfolio',
-    description: 'Portfolio website voor creatief bureau',
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=800&fit=crop',
-    tech: ['Next.js', 'Framer Motion', 'Three.js'],
-    color: 'from-pink-600 via-purple-500 to-violet-600'
-  }
-];
+import { projects } from '@/lib/projects';
 
 export default function PortfolioPage() {
   const fadeInUp = {
